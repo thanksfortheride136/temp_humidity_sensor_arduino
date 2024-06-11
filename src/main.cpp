@@ -1,13 +1,17 @@
-//THIS IS NOT COMPLETE YET IN PLATFORM.IO, I DONT KNOW HOW TO GET THE LIBRARY IN HERE TO WORK. WORKS ON ARDUINO IDE https://github.com/dhrubasaha08/DHT11/tree/main
-
-#include <arduino.h>
+//Linked library for DHT11 located in platform.ini file --> lib_deps = https://github.com/dhrubasaha08/DHT11 @ ^2.1.0 
+#include <Arduino.h>
 #include <DHT11.h>
 const int temp_sensor_pin = 2;
 
 DHT11 temp_sensor(temp_sensor_pin); //declares a new object called temp_sensor from the DHT11 class. The var name in ( ) is called a constructors. They give the object needed default values.
 
+//Function Prototypes. Needed in C++, the compiler needs to know about these functions first before using.
+void read_humidity();
+void read_temp();
+float c_to_f(float temp_in_c);
 
 void setup() {
+  
   Serial.begin(9600);
   temp_sensor.setDelay(2000); //Prob set to every 30 minutes for plant care.
 }
